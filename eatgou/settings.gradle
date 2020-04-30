@@ -1,0 +1,3 @@
+rootProject.name = 'eatgou'
+
+include 'eatgou-api'
