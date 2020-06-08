@@ -8,7 +8,6 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '14'
 
-
 configurations {
 	developmentOnly
 	runtimeClasspath {
@@ -22,18 +21,20 @@ configurations {
 repositories {
 	mavenCentral()
 }
+
 dependencies {
 	implementation project(':eat-common')
-
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'com.h2database:h2'
-	compile('mysql:mysql-connector-java')
+	//implementation 'com.h2database:h2'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.0'
-
 	runtime 'io.jsonwebtoken:jjwt-impl:0.11.0'
 	runtime 'io.jsonwebtoken:jjwt-jackson:0.11.0'
 	compileOnly 'org.projectlombok:lombok'
+	compile('mysql:mysql-connector-java')
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -44,7 +45,7 @@ dependencies {
 
 test {
 	useJUnitPlatform()
-	environment SPRING_PROFILES_ACTIVE: test
+	environment SPRING_PROFILES_ACTIVE: "test"
 }
 dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'

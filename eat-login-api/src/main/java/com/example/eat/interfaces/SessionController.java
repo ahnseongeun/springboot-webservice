@@ -30,7 +30,7 @@ public class SessionController {
         String accessToken= jwtUtil.createToken (
                 user.getId (),
                 user.getName (),
-                user.isRestaurantOwner ()?user.getRestaurantId ():null);
+                user.getLevel ()==50?user.getRestaurantId ():null);
 
         return ResponseEntity.created (new URI (uri)).body (
                 SessionResponseDto.builder ()

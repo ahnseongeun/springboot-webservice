@@ -2,7 +2,6 @@ package com.example.eat;
 
 import com.example.eat.domain.utils.JwtUtil;
 import com.example.eat.filters.JwtAuthenticationFilter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,8 +17,7 @@ import javax.servlet.Filter;
 @EnableWebSecurity
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
-    @Value ("${jwt.secret}")
-    private String secret;
+    private String secret = "12345678901234567890123456789012";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

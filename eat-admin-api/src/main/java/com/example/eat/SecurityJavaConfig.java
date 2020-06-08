@@ -15,16 +15,16 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
     private String secret = "12345678901234567890123456789012";
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
 
         http
                 .cors ().disable ()
                 .csrf ().disable ()
                 .formLogin ().disable ()
                 .headers ().frameOptions ().disable ();
+
+
     }
 
     @Bean

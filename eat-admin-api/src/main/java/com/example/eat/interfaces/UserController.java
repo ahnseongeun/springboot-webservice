@@ -14,15 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@Transactional
+@CrossOrigin(origins = "*")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-
 public class UserController {
 
     @Autowired

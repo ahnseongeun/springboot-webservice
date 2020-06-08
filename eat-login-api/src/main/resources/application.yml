@@ -1,15 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/restaurant?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: root
-    password: 123321
+    url: jdbc:h2:~/data/eat
 
-      #spring.jackson.serialization.INDENT_OUTPUT=true
-
-    #spring.jackson.property-naming-strategy=SNAKE_CASE
-jwt:
-  secret: 12345678901234567890123456789012
 
 ---
 
@@ -17,3 +9,17 @@ spring:
   profiles: test
   datasource:
     url: jdbc:h2:mem:test
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+
+
+
+
+

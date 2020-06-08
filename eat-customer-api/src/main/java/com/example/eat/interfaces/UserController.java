@@ -23,20 +23,20 @@ public class UserController {
     public ResponseEntity<?> create(
             @RequestBody User resource
             ) throws URISyntaxException {
-        if(resource.getRestaurantId ()>=1){
-            user=userService.RegisterOwner (
-                    resource.getEmail (),
-                    resource.getPassword (),
-                    resource.getName (),
-                    resource.getPhoneNumber (),
-                    resource.getRestaurantId ()
-            );
-        }else {
-             user = userService.RegisterUser (
+        if(resource.getRestaurantId ()==null){
+            user=userService.RegisterUser (
                     resource.getEmail (),
                     resource.getPassword (),
                     resource.getName (),
                     resource.getPhoneNumber ()
+            );
+        }else {
+             user = userService.RegisterOwner (
+                    resource.getEmail (),
+                    resource.getPassword (),
+                    resource.getName (),
+                    resource.getPhoneNumber (),
+                     resource.getRestaurantId ()
             );
         }
         String url="/user/"+user.getId ();
