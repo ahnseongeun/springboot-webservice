@@ -1,24 +1,24 @@
 spring:
   datasource:
-    url: jdbc:h2:~/data/eat
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/restaurant?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 123321
 
----
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
 
-spring:
-  profiles: test
-  datasource:
-    url: jdbc:h2:mem:test
-
----
-
-spring:
-  profiles: mysql
-  datasource:
-    url: jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATABASE}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
-
-
-
-
-
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
